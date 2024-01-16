@@ -11,7 +11,8 @@ const UserList: React.FC<any> = ({ users, onDeleteUser }) => {
    return (
      <div>
        <ul>
-         {users.map((user) => (
+        {/* Specify user data type as object with id(number), name(string), age (number)*/}
+         {users.map((user:{id:number,name:string,age:number}) => (
            // Assigning a unique key to each user for efficient rendering
            <li key={user.id}>
         {/* For each row we will call back the UserInfo component */}
