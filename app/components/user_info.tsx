@@ -8,7 +8,6 @@ interface UserInfoProps {
 
  const UserInfo: React.FC<any> =({user, onDeleteUser}) => {
 
-  
     const {id, name, age} = user; // Array or object destructuring
     
     const handleDelete = () => {
