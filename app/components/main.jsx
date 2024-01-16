@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import Counter from './counter'
 import UserInfo from './user_info';
 import UserList from './user_list';
-import UserForm from './user_form';
+import MyForm from './user_form';
 export default function Main() {
     const currentUser = {
         id:1,
@@ -46,11 +46,11 @@ export default function Main() {
     <Counter initialValue={7}/>
 
 <hr/>
-    <UserForm onAddUser={handleAdd}/>
+    <MyForm onAddUser={handleAdd}/>
 
     <UserList users={userList}/>
     <hr />
-    <UserInfo user={currentUser}/>
+    {/* <UserInfo user={currentUser}/> */}
 
     </div>
         

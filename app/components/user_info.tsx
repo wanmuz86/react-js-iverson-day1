@@ -1,10 +1,21 @@
 import React from 'react'
 import { UserProps } from '../interfaces/user_props';
 
- const UserInfo: React.FC<{user:UserProps}> = ({user}) => {
-// export default function UserInfo({user}) {
-    
+interface UserInfoProps {
+  user: UserProps;
+  onDeleteUser: (id: number) => void; // Callback function to handle delete
+}
+
+ const UserInfo: React.FC<any> =({user, onDeleteUser}) => {
+
+  
     const {id, name, age} = user; // Array or object destructuring
+    
+    const handleDelete = () => {
+      
+      onDeleteUser(id);
+   
+    }
 
   return (
     <div>
@@ -17,6 +28,8 @@ import { UserProps } from '../interfaces/user_props';
             :
             <p>Welcome to the website</p>
             }
+
+          <button onClick={handleDelete}>Delete User</button>
     </div>
   )
 }
