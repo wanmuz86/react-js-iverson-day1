@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, {useState} from 'react'
 import Counter from './counter'
 import UserInfo from './user_info';
 import UserList from './user_list';
@@ -9,11 +10,30 @@ export default function Main() {
         name:'John Doe',
         age:25
     }
-    const userList = [
-        { id: 1, name: 'John Doe', age: 25 },
-        { id: 2, name: 'Jane Doe', age: 30 },
-        { id: 3, name: 'Bob Smith', age: 22 },
-      ];
+    // const userList = [
+    //     { id: 1, name: 'John Doe', age: 25 },
+    //     { id: 2, name: 'Jane Doe', age: 30 },
+    //     { id: 3, name: 'Bob Smith', age: 22 },
+    //   ];
+
+    const [userList,setUserList] = useState([]);
+    const handleAdd = (user) => {
+        console.log(user)
+        // Spread operator on an Array - > Adding item at the end of array
+        // Spread operator on an object -> Overide add property id into the object user (passed from UserForm)
+        // -> I add userId into the object, then I add the object at the end of the array
+        setUserList([...userList, {...user,id:getNextUserId()}])
+    }
+
+    const getNextUserId = () => {
+        if (userList.length == 0){
+            return 1
+        }
+        else {
+            return userList[userList.length-1].id +1
+        }
+    }
+    
  
   return (
     <div>
@@ -26,8 +46,8 @@ export default function Main() {
     <Counter initialValue={7}/>
 
 <hr/>
-    <UserForm/>
-    
+    <UserForm onAddUser={handleAdd}/>
+
     <UserList users={userList}/>
     <hr />
     <UserInfo user={currentUser}/>

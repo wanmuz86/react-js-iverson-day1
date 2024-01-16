@@ -1,7 +1,18 @@
 "use client"
 import React,{ChangeEvent, FormEvent, useState} from 'react'
 
-export default function MyForm() {
+// Props to pass back the user, it will return a function ()=>void 
+// with object user having name and age as parameter {}
+interface AddUserProps {
+    onAddUser : (
+        user: {
+            name:string;
+            age:number
+        }
+    ) => void;
+}
+
+export default function MyForm({onAddUser}) {
     const [user, setUser] = useState({
         'name':'',
         'age':0
@@ -35,6 +46,12 @@ export default function MyForm() {
         e.preventDefault();
         console.log(user.name)
         console.log(user.age)
+        onAddUser(user)
+        // Clear the form (In slide I create variable initialState for this)
+        setUser({
+            'name':'',
+            'age':0
+        })
     }
 
   return (
