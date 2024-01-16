@@ -1,10 +1,11 @@
 import { UserProps } from "../interfaces/user_props";
 import UserInfo from "./user_info";
 
-const UserList: React.FC<{ users: Array<UserProps> }> = ({ users }) => {
+const UserList: React.FC<any> = ({ users, onDeleteUser }) => {
   
   const handleDelete = (id: number) => {
-    console.log(id)
+    console.log(`id ${id} from user_list`)
+    onDeleteUser(id);
   }
 
    return (

@@ -32,9 +32,14 @@ export default function Main() {
         else {
             return userList[userList.length-1].id +1
         }
+    } 
+    const handleDelete = (id) => {
+        console.log(`id ${id} from main`)
+        // To add the delete function (filter)
+        const filteredList = userList.filter(val=> val.id != id);
+        setUserList(filteredList);
     }
-    
- 
+
   return (
     <div>
         <h2>Main</h2>
@@ -48,7 +53,7 @@ export default function Main() {
 <hr/>
     <MyForm onAddUser={handleAdd}/>
 
-    <UserList users={userList}/>
+    <UserList users={userList} onDeleteUser={handleDelete}/>
     <hr />
     {/* <UserInfo user={currentUser}/> */}
 
