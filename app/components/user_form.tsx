@@ -11,8 +11,7 @@ interface AddUserProps {
         }
     ) => void;
 }
-
-export default function MyForm({onAddUser}) {
+const MyForm: React.FC<AddUserProps> = ({onAddUser}) => {
     const [user, setUser] = useState({
         'name':'',
         'age':0
@@ -68,3 +67,4 @@ export default function MyForm({onAddUser}) {
     </div>
   )
 }
+export default MyForm;
