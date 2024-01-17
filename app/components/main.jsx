@@ -1,10 +1,11 @@
 "use client"
-import React, {useState} from 'react'
+import  {useState, useEffect,useRef} from 'react'
 import Counter from './counter'
-import UserInfo from './user_info';
 import UserList from './user_list';
 import MyForm from './user_form';
+
 export default function Main() {
+    
     const currentUser = {
         id:1,
         name:'John Doe',
@@ -17,6 +18,17 @@ export default function Main() {
     //   ];
 
     const [userList,setUserList] = useState([]);
+    const userListRef = useRef(userList);
+    useEffect(() => {
+        
+        console.log('UserList changed');
+        console.log('Previous UserList:', userListRef.current);
+        console.log('Current UserList:', userList);
+    
+        // Update the ref to the current state
+        userListRef.current = userList;
+      }, [userList]);
+
     const handleAdd = (user) => {
         console.log(user)
         // Spread operator on an Array - > Adding item at the end of array
@@ -39,6 +51,13 @@ export default function Main() {
         const filteredList = userList.filter(val=> val.id != id);
         setUserList(filteredList);
     }
+
+    // first argument: function
+    // second argumnet: state that we want to observe
+    // useEffect(()=>{
+    //     console.log("First time loaded")
+    // },[]);
+
 
   return (
     <div>

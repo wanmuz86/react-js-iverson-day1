@@ -1,5 +1,5 @@
 "use client"
-import React,{ChangeEvent, FormEvent, useState} from 'react'
+import {ChangeEvent, FormEvent, useState} from 'react'
 
 // Props to pass back the user, it will return a function ()=>void 
 // with object user having name and age as parameter {}

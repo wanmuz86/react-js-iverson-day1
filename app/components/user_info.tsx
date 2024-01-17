@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { UserProps } from '../interfaces/user_props';
 
 interface UserInfoProps {
@@ -6,7 +6,7 @@ interface UserInfoProps {
   onDeleteUser: (id: number) => void; // Callback function to handle delete
 }
 
- const UserInfo: React.FC<any> =({user, onDeleteUser}) => {
+ const UserInfo: React.FC<UserInfoProps> =({user, onDeleteUser}) => {
 
     const {id, name, age} = user; // Array or object destructuring
     

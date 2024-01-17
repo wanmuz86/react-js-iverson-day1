@@ -1,5 +1,5 @@
 "use client" // Related to NextJS (Thursday / Fridat)
-import React,{useState} from 'react'
+import {useState} from 'react'
 
 export default function Counter({initialValue}) {
     // I am defining a dynamic variable/state called number
